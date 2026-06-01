@@ -1,0 +1,40 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.6'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.espe'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Dependencias oficiales de Spring Boot
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Driver para PostgreSQL (Local)
+	runtimeOnly 'org.postgresql:postgresql'
+
+	// Entorno de Pruebas
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+	// Versiones estables de LangChain4j compatibles con arquitecturas modernas
+	implementation 'dev.langchain4j:langchain4j-open-ai-spring-boot-starter:0.36.2'
+	implementation 'dev.langchain4j:langchain4j-spring-boot-starter:0.36.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
